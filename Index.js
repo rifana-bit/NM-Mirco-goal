@@ -20,11 +20,14 @@ mongoose
   .catch((err) => console.log(err));
 
 //route
-app.use("/", authRoute);
-app.use("/", GoalRouter);
+app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/goals", GoalRouter);
 
 app.use(errormiddleware);
 app.listen(PORT, () => {
   console.log("Server running on port 8000");
 });
 
+app.get("/", (req,res)=>{
+  res.send("API running");
+})
